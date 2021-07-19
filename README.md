@@ -23,3 +23,8 @@ db.create_all()
 ```
 python3 app.py
 ```
+
+## Api endpoint 
+```
+http://localhost:5000/home/
+```
