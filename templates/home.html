@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="todo-form">
+        <form method="POST", action="/addTodo">
+            <label for="todo">Title: </label>
+            <br />
+            <input id="todo" type="text" name="todo">
+            <br>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <td>S.No</td>
+                <td>todo Item</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <td>{{ todo.id }}</td>
+                    <td>{{ todo.todo }}</td>
+                    <td>
+                        <a href="{{ url_for('showUpdateTodo', id=todo.id, value=todo.todo) }}">Update</a>
+                        <a href="{{ url_for('deleteTodo', id=todo.id) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
